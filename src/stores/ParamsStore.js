@@ -6,18 +6,38 @@ import { stations } from "../assets/stationList";
 import { determineQuantiles, index, arcData, closest } from "../utils/utils";
 import { format, getMonth } from "date-fns/esm";
 
+import createHistory from "history/createBrowserHistory";
+const history = createHistory();
+
 export default class ParamsStore {
+  hash = "nycthr";
   constructor() {
+    console.log(history.location.hash === "");
+    when(
+      () => history.location.hash === "",
+      () => history.push({ hash: `#${this.hash}` })
+    );
+
+    when(
+      () => history.location.hash !== "nycthr",
+      () => (this.hash = history.location.hash)
+    );
+
     when(() => !this.data, () => this.loadObservedData(this.params));
     reaction(() => this.station.sid, () => this.loadObservedData(this.params));
     // reaction(() => this.data, () => console.log(this.gauge));
+    console.log(history.location);
+    console.log(this.hash);
   }
 
   isLoading = false;
   setIsLoading = d => this.isLoading;
 
-  station = stations.find(stn => stn.name === "NYC-Central Park");
+  station = stations.find(stn => stn.sid === this.hash);
   setStation = d => {
+    console.log(d);
+    this.hash = d.sid;
+    history.push({ hash: `#${this.hash}` });
     this.station = d;
     this.maxt = this.seasonalType[0].range[1];
     this.mint = this.seasonalType[1].range[0];
@@ -666,6 +686,7 @@ decorate(ParamsStore, {
   isLoading: observable,
   setIsLoading: action,
   station: observable,
+  hash: observable,
   setStation: action,
   maxt: observable,
   setMaxt: action,
