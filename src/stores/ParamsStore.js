@@ -10,7 +10,7 @@ export default class ParamsStore {
   constructor() {
     when(() => !this.data, () => this.loadObservedData(this.params));
     reaction(() => this.station.sid, () => this.loadObservedData(this.params));
-    reaction(() => this.data, () => console.log(this.gauge));
+    // reaction(() => this.data, () => console.log(this.gauge));
   }
 
   isLoading = false;
