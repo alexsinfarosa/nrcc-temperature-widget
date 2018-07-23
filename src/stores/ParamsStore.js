@@ -12,7 +12,6 @@ const history = createHistory();
 export default class ParamsStore {
   hash = "nycthr";
   constructor() {
-    console.log(history.location.hash === "");
     when(
       () => history.location.hash === "",
       () => history.push({ hash: `#${this.hash}` })
@@ -25,9 +24,6 @@ export default class ParamsStore {
 
     when(() => !this.data, () => this.loadObservedData(this.params));
     reaction(() => this.station.sid, () => this.loadObservedData(this.params));
-    // reaction(() => this.data, () => console.log(this.gauge));
-    console.log(history.location);
-    console.log(this.hash);
   }
 
   isLoading = false;
@@ -35,7 +31,6 @@ export default class ParamsStore {
 
   station = stations.find(stn => stn.sid === this.hash);
   setStation = d => {
-    console.log(d);
     this.hash = d.sid;
     history.push({ hash: `#${this.hash}` });
     this.station = d;
@@ -46,16 +41,9 @@ export default class ParamsStore {
   };
 
   maxt = this.seasonalType[0].range[1];
-  // setMaxt = d => (this.maxt = d);
-
   mint = this.seasonalType[1].range[0];
-  // setMint = d => (this.mint = d);
-
   rainfall = this.seasonalType[2].range[0];
-  // setRainfall = d => (this.rainfall = d);
-
   snowfall = this.seasonalType[2].range[0];
-  // setSnowfall = d => (this.snowfall = d);
 
   setExtreemeValues = (type, value) => {
     this[type] = value;

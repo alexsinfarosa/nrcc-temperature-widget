@@ -56,25 +56,32 @@ class App extends Component {
 
     return (
       <Grid container className={classes.root} spacing={32}>
-        <Grid item xs={12} sm={4}>
-          <Typography variant="display1" gutterBottom>
-            <div>Viewing Climate Conditions at </div>
-            <div style={{ color: "#843EA4" }}>{station.name}</div>
-          </Typography>
-
-          <Button
-            size="small"
-            variant="contained"
-            color="primary"
-            aria-label="download"
-            onClick={this.handleOpen}
+        <Grid item xs={12} sm={12}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginBottom: 32
+            }}
           >
-            <Icon style={{ marginRight: 5 }}>place</Icon>
-            STATIONS
-          </Button>
-        </Grid>
+            <Typography variant="display1" gutterBottom>
+              <div>
+                Viewing Climate Conditions at{" "}
+                <span style={{ color: "#843EA4" }}>{station.name}</span>
+              </div>
+            </Typography>
+            <Button
+              size="small"
+              variant="contained"
+              color="primary"
+              aria-label="download"
+              onClick={this.handleOpen}
+            >
+              <Icon style={{ marginRight: 5 }}>place</Icon>
+              STATIONS
+            </Button>
+          </div>
 
-        <Grid item xs={12} sm={8}>
           <Row type="TEMPERATURE" row={avgTemps} />
           <Row type="PRECIPITATION" row={avgPcpns} />
           <Row type="SEASONAL EXTREME" row={seasonalExtreme} />
