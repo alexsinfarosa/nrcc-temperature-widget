@@ -298,19 +298,19 @@ export default class ParamsStore {
                 style: {
                   whiteSpace: "nowrap"
                 },
-                label: "80 °C"
+                label: "80 °F"
               },
               90: {
                 style: {
                   whiteSpace: "nowrap"
                 },
-                label: "90 °C"
+                label: "90 °F"
               },
               100: {
                 style: {
                   whiteSpace: "nowrap"
                 },
-                label: "100 °C"
+                label: "100 °F"
               }
             }
           },
@@ -327,19 +327,19 @@ export default class ParamsStore {
                 style: {
                   whiteSpace: "nowrap"
                 },
-                label: "65 °C"
+                label: "65 °F"
               },
               70: {
                 style: {
                   whiteSpace: "nowrap"
                 },
-                label: "70 °C"
+                label: "70 °F"
               },
               75: {
                 style: {
                   whiteSpace: "nowrap"
                 },
-                label: "75 °C"
+                label: "75 °F"
               }
             }
           },
@@ -387,19 +387,19 @@ export default class ParamsStore {
                 style: {
                   whiteSpace: "nowrap"
                 },
-                label: "32 °C"
+                label: "32 °F"
               },
               20: {
                 style: {
                   whiteSpace: "nowrap"
                 },
-                label: "20 °C"
+                label: "20 °F"
               },
               15: {
                 style: {
                   whiteSpace: "nowrap"
                 },
-                label: "15 °C"
+                label: "15 °F"
               }
             }
           },
@@ -416,19 +416,19 @@ export default class ParamsStore {
                 style: {
                   whiteSpace: "nowrap"
                 },
-                label: "20 °C"
+                label: "20 °F"
               },
               15: {
                 style: {
                   whiteSpace: "nowrap"
                 },
-                label: "15 °C"
+                label: "15 °F"
               },
               10: {
                 style: {
                   whiteSpace: "nowrap"
                 },
-                label: "10 °C"
+                label: "10 °F"
               }
             }
           },
