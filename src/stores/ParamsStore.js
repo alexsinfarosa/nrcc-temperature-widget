@@ -536,7 +536,7 @@ export default class ParamsStore {
           d => (d[i + 1] === "T" ? "0.0001" : parseFloat(d[i + 1]).toFixed(1))
         );
 
-        const original = dates
+        let original = dates
           .map((date, i) => {
             const value = values[i];
             return value === "M" || value === "NaN" ? null : { date, value };
@@ -545,7 +545,6 @@ export default class ParamsStore {
 
         const datesCleaned = original.map(obj => obj.date);
         const valuesCleaned = original.map(obj => obj.value);
-
         let daysAboveThisYear;
         if (
           type === "maxt" ||
@@ -560,7 +559,7 @@ export default class ParamsStore {
           daysAboveThisYear = parseFloat(valuesCleaned.slice(-1)[0]).toFixed(1);
         }
 
-        const quantiles = determineQuantiles(valuesCleaned);
+        const quantiles = determineQuantiles(valuesCleaned.slice(0, -1));
         const mean = jStat.quantiles(valuesCleaned, [0.5])[0].toFixed(1);
         const active = index(daysAboveThisYear, quantiles);
         const gaugeData = arcData(quantiles, type);
@@ -616,6 +615,7 @@ export default class ParamsStore {
         };
         results.push(p);
       });
+      console.log(results);
       return results;
     }
   }

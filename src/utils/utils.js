@@ -72,13 +72,15 @@ export const index = (threshold, quantiles) => {
     if (daysAboveThisYear >= q[2] && daysAboveThisYear < q[3]) return 4;
     if (daysAboveThisYear >= q[3] && daysAboveThisYear <= q[4]) return 6;
     if (daysAboveThisYear > q[4]) return 8;
-  } else if (q[1] === q[2]) {
+  } else if (q[1] === q[2] && daysAboveThisYear !== q[2]) {
     if (daysAboveThisYear < q[0]) return 0;
     if (daysAboveThisYear >= q[0] && daysAboveThisYear < q[1]) return 2;
     if (daysAboveThisYear >= q[1] && daysAboveThisYear < q[2]) return 4;
     if (daysAboveThisYear >= q[2] && daysAboveThisYear < q[3]) return 6;
     if (daysAboveThisYear >= q[3] && daysAboveThisYear <= q[4]) return 6;
     if (daysAboveThisYear > q[4]) return 8;
+  } else if (q[1] === q[2] && daysAboveThisYear === q[2]) {
+    return 4;
   } else {
     if (daysAboveThisYear < q[0]) return 0;
     if (daysAboveThisYear >= q[0] && daysAboveThisYear < q[1]) return 2;
