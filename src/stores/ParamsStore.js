@@ -33,7 +33,8 @@ export default class ParamsStore {
   isLoading = false;
   setIsLoading = d => this.isLoading;
 
-  station;
+  station = stations.find(stn => stn.sid === "nycthr");
+
   setStation = d => {
     this.hash = d.sid;
     history.push({ hash: `#${this.hash}` });
