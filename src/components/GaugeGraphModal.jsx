@@ -4,6 +4,8 @@ import { withStyles } from "@material-ui/core/styles";
 import withRoot from "../withRoot";
 import Modal from "@material-ui/core/Modal";
 import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import Icon from "@material-ui/core/Icon";
 
 const styles = theme => ({
   root: {
@@ -21,6 +23,12 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4,
     paddingLeft: 0,
     paddingRight: 0
+  },
+  header: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "space-between"
   }
 });
 
@@ -45,13 +53,38 @@ class GaugeGraphModal extends Component {
           aria-labelledby="simple-dialog-title"
         >
           <div className={classes.paper}>
-            <Typography
-              variant="display1"
-              gutterBottom
-              style={{ marginBottom: 32 }}
-            >
-              {title}
-            </Typography>
+            <div className={classes.header}>
+              <div style={{ display: "flex", flex: 1 }} />
+              <div
+                style={{
+                  display: "flex",
+                  flex: 5,
+                  justifyContent: "center",
+                  alignItems: "baseline"
+                }}
+              >
+                <Typography
+                  variant="display1"
+                  gutterBottom
+                  style={{ marginBottom: 32 }}
+                >
+                  {title}
+                </Typography>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flex: 1,
+                  justifyContent: "center",
+                  alignItems: "baseline"
+                }}
+              >
+                <Button size="small" onClick={this.handleClose}>
+                  <Icon style={{ marginRight: 5 }}>close</Icon>
+                </Button>
+              </div>
+            </div>
+
             <div>{gauge}</div>
             <div>{timeSeries}</div>
           </div>

@@ -58,9 +58,9 @@ export const stations = [
   {
     name: "Wilmington",
     state: "DE",
-    sid: "ilmthr",
-    lon: -77.8997,
-    lat: 34.2675,
+    sid: "ilg_thr",
+    lon: -75.60567,
+    lat: 39.6744,
     type: "blue"
   },
   {
@@ -69,6 +69,14 @@ export const stations = [
     sid: "bdrthr",
     lon: -73.12889,
     lat: 41.15833,
+    type: "blue"
+  },
+  {
+    name: "Ithaca",
+    state: "NY",
+    sid: "ith_thr",
+    lon: -76.4491,
+    lat: 42.4491,
     type: "blue"
   },
   {
