@@ -74,7 +74,7 @@ export const stations = [
   {
     name: "Ithaca",
     state: "NY",
-    sid: "ith_thr",
+    sid: "304174",
     lon: -76.4491,
     lat: 42.4491,
     type: "blue"

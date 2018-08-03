@@ -16,10 +16,14 @@ export default class ParamsStore {
       () => history.location.hash === "",
       () => history.push({ hash: `#${this.hash}` })
     );
-
     when(
-      () => history.location.hash !== "nycthr",
-      () => (this.hash = history.location.hash)
+      () => history.location.hash !== "#nycthr",
+      () => {
+        this.hash = history.location.hash.slice(1);
+        this.station = stations.find(
+          stn => stn.sid === history.location.hash.slice(1)
+        );
+      }
     );
 
     when(() => !this.data, () => this.loadObservedData(this.params));
@@ -29,7 +33,7 @@ export default class ParamsStore {
   isLoading = false;
   setIsLoading = d => this.isLoading;
 
-  station = stations.find(stn => stn.sid === this.hash);
+  station;
   setStation = d => {
     this.hash = d.sid;
     history.push({ hash: `#${this.hash}` });
