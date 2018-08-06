@@ -60,7 +60,7 @@ class App extends Component {
           <div
             style={{
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: "space-around",
               marginBottom: 32
             }}
           >
@@ -71,10 +71,9 @@ class App extends Component {
               </div>
             </Typography>
             <Button
-              size="small"
-              variant="contained"
+              variant="extendedFab"
               color="primary"
-              aria-label="download"
+              aria-label="map"
               onClick={this.handleOpen}
             >
               <Icon style={{ marginRight: 5 }}>place</Icon>
