@@ -81,6 +81,8 @@ class App extends Component {
             </Button>
           </div>
 
+          <div style={{ textAlign: "center" }}>DATE...............</div>
+
           <Row type="TEMPERATURE" row={avgTemps} />
           <Row type="PRECIPITATION" row={avgPcpns} />
           <Row type="SEASONAL EXTREME" row={seasonalExtreme} />

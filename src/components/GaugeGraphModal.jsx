@@ -86,7 +86,7 @@ class GaugeGraphModal extends Component {
             </div>
 
             <div>{gauge}</div>
-            <div>{timeSeries}</div>
+            {timeSeries}
           </div>
         </Modal>
       </div>

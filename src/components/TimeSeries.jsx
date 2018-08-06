@@ -14,7 +14,8 @@ import {
   CartesianGrid,
   Tooltip,
   Cell,
-  Label
+  Label,
+  ResponsiveContainer
 } from "recharts";
 
 import GraphLabels from "./GraphLabels";
@@ -26,8 +27,6 @@ const styles = theme => ({
   }
 });
 
-const width = 1250;
-const height = 350;
 class TimeSeries extends Component {
   render() {
     const { classes, gauge } = this.props;
@@ -58,31 +57,37 @@ class TimeSeries extends Component {
     return (
       <div
         style={{
+          // flex: 1,
+          width: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center"
         }}
       >
-        <BarChart
-          width={width}
-          height={height}
-          data={gauge.graphData}
-          margin={{ top: 30, right: 50, left: 100, bottom: 30 }}
-        >
-          <CartesianGrid strokeDasharray="1 1" />
-          <XAxis dataKey="date" tick={<GraphLabels />} />
-          <Tooltip content={renderTooltip} />
-          <ReferenceLine isFront y={0} stroke="#000">
-            <Label value={`Mean = ${gauge.mean}`} offset={8} position="left" />
-          </ReferenceLine>
-          <Bar dataKey="bar" fill={"red"}>
-            {gauge.graphData.map((entry, index) => {
-              return <Cell key={index} fill={entry.barColor} />;
-            })}
-          </Bar>
-          />
-        </BarChart>
+        <ResponsiveContainer width="100%" height={300}>
+          <BarChart
+            data={gauge.graphData}
+            margin={{ top: 30, right: 50, left: 100, bottom: 30 }}
+          >
+            <CartesianGrid strokeDasharray="1 1" />
+            <XAxis dataKey="date" tick={<GraphLabels />} />
+            <Tooltip content={renderTooltip} />
+            <ReferenceLine isFront y={0} stroke="#000">
+              <Label
+                value={`Mean = ${gauge.mean}`}
+                offset={8}
+                position="left"
+              />
+            </ReferenceLine>
+            <Bar dataKey="bar" fill={"red"}>
+              {gauge.graphData.map((entry, index) => {
+                return <Cell key={index} fill={entry.barColor} />;
+              })}
+            </Bar>
+            />
+          </BarChart>
+        </ResponsiveContainer>
         <CSVLink
           className={classes.csvLink}
           data={gauge.csvData}
