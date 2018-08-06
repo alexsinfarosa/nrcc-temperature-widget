@@ -65,7 +65,7 @@ class TimeSeries extends Component {
           alignItems: "center"
         }}
       >
-        <ResponsiveContainer width="100%" height={300}>
+        <ResponsiveContainer width="100%" height={400}>
           <BarChart
             data={gauge.graphData}
             margin={{ top: 30, right: 50, left: 100, bottom: 30 }}

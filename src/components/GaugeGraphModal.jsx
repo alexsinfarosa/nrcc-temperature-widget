@@ -43,7 +43,6 @@ class GaugeGraphModal extends Component {
 
   render() {
     const { classes, isOpen, gauge, title, timeSeries } = this.props;
-
     return (
       <div className={classes.root}>
         <Modal

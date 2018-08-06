@@ -261,8 +261,8 @@ export default class ParamsStore {
 
     return {
       sid: this.station.sid,
-      sdate: `POR-${format(new Date(), "MM-dd")}`,
-      edate: format(new Date(), "YYYY-MM-dd"),
+      sdate: `POR-${format(new Date(), "MM-DD")}`,
+      edate: format(new Date(), "YYYY-MM-DD"),
       elems
     };
   }

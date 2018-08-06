@@ -8,6 +8,10 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
 
+import DatePicker from "material-ui-pickers/DatePicker";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import IconButton from "@material-ui/core/IconButton";
+
 // components
 import MapModal from "./MapModal";
 import Row from "./Row";
@@ -29,6 +33,11 @@ const styles = theme => ({
     fontWeight: "bold",
     letterSpacing: 1,
     textAlign: "center"
+  },
+  formControl: {
+    minWidth: 120,
+    width: "15%",
+    margin: "32px auto"
   }
 });
 
@@ -81,7 +90,26 @@ class App extends Component {
             </Button>
           </div>
 
-          <div style={{ textAlign: "center" }}>DATE...............</div>
+          <div className={classes.formControl}>
+            <DatePicker
+              style={{ width: "100%" }}
+              label="Date of Interest"
+              value={new Date()}
+              onChange={e => console.log(e)}
+              format="MMMM Do, YYYY"
+              disableFuture
+              showTodayButton
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton style={{ marginRight: -10 }}>
+                      <Icon>date_range</Icon>
+                    </IconButton>
+                  </InputAdornment>
+                )
+              }}
+            />
+          </div>
 
           <Row type="TEMPERATURE" row={avgTemps} />
           <Row type="PRECIPITATION" row={avgPcpns} />
