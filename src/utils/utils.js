@@ -36,7 +36,6 @@ export const determineQuantiles = data => {
   let original = jStat
     .quantiles(d, [0, 0.25, 0.5, 0.75, 1])
     .map(x => parseFloat(x));
-  // console.log(original);
 
   let q = {};
   original.forEach((value, i) => {

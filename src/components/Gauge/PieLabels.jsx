@@ -9,15 +9,16 @@ const PieLabels = ({
   outerRadius,
   index,
   payload,
-  selectedIdx
+  selectedIdx,
+  elem
 }) => {
   const RADIAN = Math.PI / 180;
 
   // Provides coordinate for quantiles on the Pie
   const sin = Math.sin(-RADIAN * endAngle);
   const cos = Math.cos(-RADIAN * endAngle);
-  const x = cx + (innerRadius - 12) * cos;
-  const y = cy + (innerRadius - 12) * sin;
+  const x = cx + (innerRadius - 15) * cos;
+  const y = cy + (innerRadius - 15) * sin;
 
   // Provides coordinates for the arc labels
   const sinL = Math.sin(-RADIAN * midAngle);
@@ -26,6 +27,8 @@ const PieLabels = ({
   const yL = cy + (innerRadius + (outerRadius - innerRadius) / 2) * sinL;
 
   const { name, daysAboveThisYear, endArcQuantile } = payload;
+  const isPcp =
+    elem === "pcpnMonth" || elem === "pcpnSeason" || elem === "pcpnYear";
 
   return (
     <g>
@@ -38,7 +41,10 @@ const PieLabels = ({
         textAnchor={x > cx ? "middle" : "middle"}
         dominantBaseline="central"
       >
-        {payload.endArcQuantile && payload.endArcQuantile.toFixed(1)}
+        {payload.endArcQuantile &&
+          (isPcp
+            ? payload.endArcQuantile.toFixed(2)
+            : payload.endArcQuantile.toFixed(1))}
       </text>
 
       {(name === "Min" ||
