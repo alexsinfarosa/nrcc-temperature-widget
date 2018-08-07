@@ -12,21 +12,19 @@ const history = createHistory();
 export default class ParamsStore {
   hash = "nycthr";
   constructor() {
-    when(
-      () =>
-        history.location.hash === "" ||
-        stations.find(stn => stn.sid === history.location.hash) === undefined,
-      () => history.push({ hash: `#${this.hash}` })
-    );
-    when(
-      () => history.location.hash !== "#nycthr",
-      () => {
-        this.hash = history.location.hash.slice(1);
-        this.station = stations.find(
-          stn => stn.sid === history.location.hash.slice(1)
-        );
-      }
-    );
+    const query = history.location.hash.slice(1);
+    const isValidQuery =
+      query !== "" && stations.find(stn => stn.sid === query) !== undefined;
+
+    isValidQuery
+      ? when(
+          () => true,
+          () => {
+            this.hash = query;
+            this.station = stations.find(stn => stn.sid === query);
+          }
+        )
+      : when(() => true, () => history.push({ hash: `#${this.hash}` }));
 
     when(() => !this.data, () => this.loadObservedData(this.params));
     reaction(() => this.station.sid, () => this.loadObservedData(this.params));
