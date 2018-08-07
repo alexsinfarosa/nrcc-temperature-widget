@@ -13,7 +13,9 @@ export default class ParamsStore {
   hash = "nycthr";
   constructor() {
     when(
-      () => history.location.hash === "",
+      () =>
+        history.location.hash === "" ||
+        stations.find(stn => stn.sid === history.location.hash) === undefined,
       () => history.push({ hash: `#${this.hash}` })
     );
     when(
