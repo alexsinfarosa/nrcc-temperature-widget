@@ -60,7 +60,9 @@ class App extends Component {
       station,
       avgTemps,
       avgPcpns,
-      seasonalExtreme
+      seasonalExtreme,
+      dateOfInterest,
+      setDateOfInterest
     } = this.props.appStore.paramsStore;
 
     return (
@@ -94,8 +96,8 @@ class App extends Component {
             <DatePicker
               style={{ width: "100%" }}
               label="Date of Interest"
-              value={new Date()}
-              onChange={e => console.log(e)}
+              value={dateOfInterest}
+              onChange={setDateOfInterest}
               format="MMMM Do, YYYY"
               disableFuture
               showTodayButton

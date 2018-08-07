@@ -673,6 +673,9 @@ export default class ParamsStore {
       ];
     }
   }
+
+  dateOfInterest = new Date();
+  setDateOfInterest = d => (this.dateOfInterest = d);
 }
 
 decorate(ParamsStore, {
@@ -702,5 +705,7 @@ decorate(ParamsStore, {
   extremeMaxtT: computed,
   extremeMinT: computed,
   extremeRainSnow: computed,
-  seasonalExtreme: computed
+  seasonalExtreme: computed,
+  dateOfInterest: observable,
+  setDateOfInterest: action
 });
