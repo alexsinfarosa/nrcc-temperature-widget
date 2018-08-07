@@ -45,7 +45,7 @@ class Gauge extends Component {
           cx={width / 2}
           cy={height / 1.95}
           labelLine={false}
-          label={<PieLabels selectedIdx={gauge.active} elem={gauge.elem} />}
+          label={<PieLabels selectedIdx={gauge.active} type={gauge.type} />}
           innerRadius={60}
           outerRadius={110}
         >

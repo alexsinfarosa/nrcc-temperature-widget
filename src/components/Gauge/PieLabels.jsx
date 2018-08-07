@@ -10,7 +10,8 @@ const PieLabels = ({
   index,
   payload,
   selectedIdx,
-  elem
+
+  type
 }) => {
   const RADIAN = Math.PI / 180;
 
@@ -27,8 +28,17 @@ const PieLabels = ({
   const yL = cy + (innerRadius + (outerRadius - innerRadius) / 2) * sinL;
 
   const { name, daysAboveThisYear, endArcQuantile } = payload;
-  const isPcp =
-    elem === "pcpnMonth" || elem === "pcpnSeason" || elem === "pcpnYear";
+
+  let precision = 1;
+  if (type === "avgTemp") precision = 1;
+  if (type === "avgPcpn") precision = 2;
+  if (
+    type === "maxt" ||
+    type === "mint" ||
+    type === "rainfall" ||
+    type === "snowfall"
+  )
+    precision = 0;
 
   return (
     <g>
@@ -41,10 +51,7 @@ const PieLabels = ({
         textAnchor={x > cx ? "middle" : "middle"}
         dominantBaseline="central"
       >
-        {payload.endArcQuantile &&
-          (isPcp
-            ? payload.endArcQuantile.toFixed(2)
-            : payload.endArcQuantile.toFixed(1))}
+        {payload.endArcQuantile && payload.endArcQuantile.toFixed(precision)}
       </text>
 
       {(name === "Min" ||
