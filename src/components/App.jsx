@@ -35,9 +35,10 @@ const styles = theme => ({
     textAlign: "center"
   },
   formControl: {
-    minWidth: 120,
-    width: "15%"
-    // margin: "32px auto"
+    minWidth: 140,
+    width: "15%",
+    marginleft: 8,
+    marginRight: 8
   }
 });
 
@@ -75,7 +76,7 @@ class App extends Component {
               marginBottom: 32
             }}
           >
-            <Typography variant="display1" gutterBottom>
+            <Typography variant="display1">
               <div>
                 Viewing Climate Conditions at{" "}
                 <span style={{ color: "#843EA4" }}>{station.name}</span>
@@ -88,7 +89,7 @@ class App extends Component {
                 label="Date of Interest"
                 value={dateOfInterest}
                 onChange={setDateOfInterest}
-                format="MMMM Do, YYYY"
+                format="MMMM Do"
                 disableFuture
                 showTodayButton
                 InputProps={{
