@@ -36,8 +36,8 @@ const styles = theme => ({
   },
   formControl: {
     minWidth: 120,
-    width: "15%",
-    margin: "32px auto"
+    width: "15%"
+    // margin: "32px auto"
   }
 });
 
@@ -81,6 +81,28 @@ class App extends Component {
                 <span style={{ color: "#843EA4" }}>{station.name}</span>
               </div>
             </Typography>
+
+            <div className={classes.formControl}>
+              <DatePicker
+                style={{ width: "100%" }}
+                label="Date of Interest"
+                value={dateOfInterest}
+                onChange={setDateOfInterest}
+                format="MMMM Do, YYYY"
+                disableFuture
+                showTodayButton
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton style={{ marginRight: -10 }}>
+                        <Icon>date_range</Icon>
+                      </IconButton>
+                    </InputAdornment>
+                  )
+                }}
+              />
+            </div>
+
             <Button
               variant="extendedFab"
               color="primary"
@@ -90,27 +112,6 @@ class App extends Component {
               <Icon style={{ marginRight: 5 }}>place</Icon>
               STATIONS
             </Button>
-          </div>
-
-          <div className={classes.formControl}>
-            <DatePicker
-              style={{ width: "100%" }}
-              label="Date of Interest"
-              value={dateOfInterest}
-              onChange={setDateOfInterest}
-              format="MMMM Do, YYYY"
-              disableFuture
-              showTodayButton
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton style={{ marginRight: -10 }}>
-                      <Icon>date_range</Icon>
-                    </IconButton>
-                  </InputAdornment>
-                )
-              }}
-            />
           </div>
 
           <Row type="TEMPERATURE" row={avgTemps} />
