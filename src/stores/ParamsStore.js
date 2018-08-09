@@ -11,6 +11,8 @@ const history = createHistory();
 
 export default class ParamsStore {
   hash = "nycthr";
+  maxt;
+  mint;
   constructor() {
     const query = history.location.hash.slice(1);
     const isValidQuery =
@@ -32,6 +34,20 @@ export default class ParamsStore {
       () => this.dateOfInterest,
       () => this.loadObservedData(this.params)
     );
+    when(
+      () => this.isSummerOrWinter === "summer",
+      () => {
+        this.maxt = 90;
+        this.mint = 65;
+      }
+    );
+    when(
+      () => this.isSummerOrWinter === "winter",
+      () => {
+        this.maxt = 32;
+        this.mint = 20;
+      }
+    );
   }
 
   isLoading = false;
@@ -43,19 +59,22 @@ export default class ParamsStore {
     this.hash = d.sid;
     history.push({ hash: `#${this.hash}` });
     this.station = d;
-    this.maxt = this.seasonalType[0].range[1];
-    this.mint = this.seasonalType[1].range[0];
-    this.rainfall = this.seasonalType[2].range[0];
-    this.snowfall = this.seasonalType[2].range[0];
+    this.maxt = this.isSummerOrWinter === "summer" ? 90 : 32;
+    this.mint = this.isSummerOrWinter === "summer" ? 65 : 20;
+    this.rainfall = 1;
+    this.snowfall = 2;
   };
 
-  maxt = this.seasonalType[0].range[1];
-  mint = this.seasonalType[1].range[0];
-  rainfall = this.seasonalType[2].range[0];
-  snowfall = this.seasonalType[2].range[0];
+  rainfall = 1;
+  snowfall = 2;
 
   dateOfInterest = new Date();
-  setDateOfInterest = d => (this.dateOfInterest = d);
+  setDateOfInterest = d => {
+    this.dateOfInterest = d;
+    this.maxt = this.isSummerOrWinter === "summer" ? 90 : 32;
+    this.mint = this.isSummerOrWinter === "summer" ? 65 : 20;
+  };
+
   get month() {
     return getMonth(this.dateOfInterest) + 1;
   }
