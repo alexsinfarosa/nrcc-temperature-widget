@@ -30,7 +30,7 @@ export const closest = (n, q) => {
 };
 
 export const determineQuantiles = data => {
-  let d = without(data, "NaN");
+  let d = without(data, NaN);
   d = without(d, "M");
 
   let original = jStat
