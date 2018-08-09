@@ -1,7 +1,6 @@
 import React from "react";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import amber from "@material-ui/core/colors/amber";
-import indigo from "@material-ui/core/colors/indigo";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 // A theme with custom primary and secondary color.

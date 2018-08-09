@@ -1,6 +1,6 @@
 import { decorate, observable, action, computed, when, reaction } from "mobx";
 import axios from "axios";
-import { jStat } from "jStat";
+// import { jStat } from "jStat";
 import { stations } from "../assets/stationList";
 
 import { determineQuantiles, index, arcData, closest } from "../utils/utils";
@@ -28,6 +28,10 @@ export default class ParamsStore {
 
     when(() => !this.data, () => this.loadObservedData(this.params));
     reaction(() => this.station.sid, () => this.loadObservedData(this.params));
+    reaction(
+      () => this.dateOfInterest,
+      () => this.loadObservedData(this.params)
+    );
   }
 
   isLoading = false;
@@ -50,25 +54,30 @@ export default class ParamsStore {
   rainfall = this.seasonalType[2].range[0];
   snowfall = this.seasonalType[2].range[0];
 
+  dateOfInterest = new Date();
+  setDateOfInterest = d => (this.dateOfInterest = d);
+  get month() {
+    return getMonth(this.dateOfInterest) + 1;
+  }
+
   setExtreemeValues = (type, value) => {
     this[type] = value;
   };
+
   // datermines the seasonal extreeme call
   get isSummerOrWinter() {
-    const month = getMonth(new Date()) + 1;
-    return month >= 4 && month <= 10 ? "summer" : "winter";
+    return this.month >= 4 && this.month <= 10 ? "summer" : "winter";
   }
 
   // returns the start of the season
   get season() {
-    const month = getMonth(new Date()) + 1;
-    if (month >= 3 && month <= 5)
+    if (this.month >= 3 && this.month <= 5)
       return { label: "Spring", season_start: "03-01" };
-    if (month >= 6 && month <= 8)
+    if (this.month >= 6 && this.month <= 8)
       return { label: "Summer", season_start: "06-01" };
-    if (month >= 9 && month <= 11)
+    if (this.month >= 9 && this.month <= 11)
       return { label: "Fall", season_start: "09-01" };
-    if (month === 12 || month === 1 || month === 2)
+    if (this.month === 12 || this.month === 1 || this.month === 2)
       return { label: "Winter", season_start: "12-01" };
   }
 
@@ -287,8 +296,7 @@ export default class ParamsStore {
   };
 
   get seasonalType() {
-    let season = this.isSummerOrWinter;
-    return season === "summer"
+    return this.isSummerOrWinter === "summer"
       ? [
           {
             type: "maxt",
@@ -498,7 +506,7 @@ export default class ParamsStore {
 
     return {
       tempMonth: {
-        label: format(new Date(), "MMMM"),
+        label: format(this.dateOfInterest, "MMMM"),
         type: "avgTemp",
         isSlider: false
       },
@@ -509,7 +517,7 @@ export default class ParamsStore {
       },
       tempYear: { label: "This Year", type: "avgTemp", isSlider: false },
       pcpnMonth: {
-        label: format(new Date(), "MMMM"),
+        label: format(this.dateOfInterest, "MMMM"),
         type: "avgPcpn",
         isSlider: false
       },
@@ -534,7 +542,7 @@ export default class ParamsStore {
         const isSlider = this.keys[elem].isSlider;
         const dates = this.data.map(d => d[0]);
         const values = this.data.map(
-          d => (d[i + 1] === "T" ? "0.0001" : parseFloat(d[i + 1]).toFixed(1))
+          d => (d[i + 1] === "T" ? 0.0001 : parseFloat(d[i + 1]))
         );
 
         let original = dates
@@ -546,7 +554,9 @@ export default class ParamsStore {
 
         const datesCleaned = original.map(obj => obj.date);
         const valuesCleaned = original.map(obj => obj.value);
+        const quantiles = determineQuantiles(valuesCleaned.slice(0, -1));
         let daysAboveThisYear;
+        let mean;
         if (
           type === "maxt" ||
           type === "mint" ||
@@ -554,14 +564,15 @@ export default class ParamsStore {
           type === "snowfall"
         ) {
           daysAboveThisYear = parseFloat(valuesCleaned.slice(-1)[0]).toFixed(0);
+          mean = quantiles["50"].toFixed(0);
         } else if (type === "avgPcpn") {
           daysAboveThisYear = parseFloat(valuesCleaned.slice(-1)[0]).toFixed(2);
+          mean = quantiles["50"].toFixed(2);
         } else {
           daysAboveThisYear = parseFloat(valuesCleaned.slice(-1)[0]).toFixed(1);
+          mean = quantiles["50"].toFixed(1);
         }
 
-        const quantiles = determineQuantiles(valuesCleaned.slice(0, -1));
-        const mean = jStat.quantiles(valuesCleaned, [0.5])[0].toFixed(1);
         const active = index(daysAboveThisYear, quantiles);
         const gaugeData = arcData(quantiles, type);
         let sliderStyle;
@@ -657,10 +668,9 @@ export default class ParamsStore {
 
   get extremeRainSnow() {
     if (this.gauge) {
-      if (this.isSummerOrWinter) {
-        return this.gauge.filter(o => o.elem === `rain${this.rainfall}`);
-      }
-      return this.gauge.filter(o => o.elem === `snow${this.snowfall}`);
+      return this.isSummerOrWinter === "summer"
+        ? this.gauge.filter(o => o.elem === `rain${this.rainfall}`)
+        : this.gauge.filter(o => o.elem === `snow${this.snowfall}`);
     }
   }
 
@@ -673,9 +683,6 @@ export default class ParamsStore {
       ];
     }
   }
-
-  dateOfInterest = new Date();
-  setDateOfInterest = d => (this.dateOfInterest = d);
 }
 
 decorate(ParamsStore, {
@@ -707,5 +714,6 @@ decorate(ParamsStore, {
   extremeRainSnow: computed,
   seasonalExtreme: computed,
   dateOfInterest: observable,
-  setDateOfInterest: action
+  setDateOfInterest: action,
+  month: computed
 });

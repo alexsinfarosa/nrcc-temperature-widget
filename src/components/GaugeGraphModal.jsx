@@ -21,8 +21,8 @@ const styles = theme => ({
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
     padding: theme.spacing.unit * 4,
-    paddingLeft: 0,
-    paddingRight: 0
+    paddingLeft: 16,
+    paddingRight: 16
   },
   header: {
     width: "100%",
