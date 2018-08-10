@@ -573,7 +573,16 @@ export default class ParamsStore {
 
         const datesCleaned = original.map(obj => obj.date);
         const valuesCleaned = original.map(obj => obj.value);
-        const quantiles = determineQuantiles(valuesCleaned.slice(0, -1));
+        let quantiles = determineQuantiles(valuesCleaned.slice(0, -1));
+
+        // const keys = Object.keys(quantiles);
+        // quantiles = keys.map(
+        //   key =>
+        //     quantiles[key] === 0.0001 ? (quantiles[key] = "T") : quantiles[key]
+        // );
+
+        // console.log(quantiles);
+
         let daysAboveThisYear;
         let mean;
         if (

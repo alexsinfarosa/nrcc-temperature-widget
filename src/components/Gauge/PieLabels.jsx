@@ -10,7 +10,6 @@ const PieLabels = ({
   index,
   payload,
   selectedIdx,
-
   type
 }) => {
   const RADIAN = Math.PI / 180;
@@ -51,7 +50,8 @@ const PieLabels = ({
         textAnchor={x > cx ? "middle" : "middle"}
         dominantBaseline="central"
       >
-        {payload.endArcQuantile && payload.endArcQuantile.toFixed(precision)}
+        {payload.endArcQuantile &&
+          (endArcQuantile === 0.0001 ? "T" : endArcQuantile.toFixed(precision))}
       </text>
 
       {(name === "Min" ||
