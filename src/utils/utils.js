@@ -104,6 +104,93 @@ export const arcData = (q, type) => {
   const v = Object.values(q);
 
   // 4-category ---------------------------------------
+
+  if (
+    q["0"] !== q["25"] &&
+    q["25"] !== q["50"] &&
+    q["50"] !== q["75"] &&
+    q["75"] !== q["100"]
+  ) {
+    return [
+      {
+        name: "New",
+        startArcQuantile: null,
+        endArcQuantile: v[0],
+        value: 2,
+        fill: "#BEBEBE"
+      },
+      {
+        name: "Min",
+        startArcQuantile: v[0],
+        endArcQuantile: v[0],
+        value: 0,
+        fill: "#BEBEBE"
+      },
+      {
+        name: "Below",
+        startArcQuantile: v[0],
+        endArcQuantile: v[1],
+        value: 4,
+        fill: "#0088FE"
+      },
+      {
+        name: "25%",
+        startArcQuantile: v[1],
+        endArcQuantile: v[1],
+        value: 0,
+        fill: "#BEBEBE"
+      },
+      {
+        name: "Slightly Below",
+        startArcQuantile: v[1],
+        endArcQuantile: v[2],
+        value: 4,
+        fill: "#7FB069"
+      },
+      {
+        name: "Mean",
+        startArcQuantile: v[2],
+        endArcQuantile: v[2],
+        value: 0,
+        fill: "#BEBEBE"
+      },
+      {
+        name: "Slightly Above",
+        startArcQuantile: v[2],
+        endArcQuantile: v[3],
+        value: 4,
+        fill: "#FFBB28"
+      },
+      {
+        name: "75%",
+        startArcQuantile: v[3],
+        endArcQuantile: v[3],
+        value: 0,
+        fill: "#BEBEBE"
+      },
+      {
+        name: "Above",
+        startArcQuantile: v[3],
+        endArcQuantile: v[4],
+        value: 4,
+        fill: "#E63B2E"
+      },
+      {
+        name: "Max",
+        startArcQuantile: v[4],
+        endArcQuantile: v[4],
+        value: 0,
+        fill: "#BEBEBE"
+      },
+      {
+        name: "New",
+        startArcQuantile: v[4],
+        endArcQuantile: null,
+        value: 2,
+        fill: "#BEBEBE"
+      }
+    ];
+  }
   if (q["25"] !== q["50"] && q["50"] !== q["75"]) {
     // case 75 === 100
     if (

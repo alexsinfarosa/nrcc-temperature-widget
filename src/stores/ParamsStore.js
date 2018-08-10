@@ -68,7 +68,7 @@ export default class ParamsStore {
   rainfall = 1;
   snowfall = 2;
 
-  dateOfInterest = new Date();
+  dateOfInterest = new Date("02-01-2018");
   setDateOfInterest = d => {
     this.dateOfInterest = d;
     this.maxt = this.isSummerOrWinter === "summer" ? 90 : 32;
@@ -574,14 +574,6 @@ export default class ParamsStore {
         const datesCleaned = original.map(obj => obj.date);
         const valuesCleaned = original.map(obj => obj.value);
         let quantiles = determineQuantiles(valuesCleaned.slice(0, -1));
-
-        // const keys = Object.keys(quantiles);
-        // quantiles = keys.map(
-        //   key =>
-        //     quantiles[key] === 0.0001 ? (quantiles[key] = "T") : quantiles[key]
-        // );
-
-        // console.log(quantiles);
 
         let daysAboveThisYear;
         let mean;
