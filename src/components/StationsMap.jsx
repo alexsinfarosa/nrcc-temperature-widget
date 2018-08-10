@@ -22,14 +22,14 @@ const styles = theme => ({
 class StationsMap extends Component {
   render() {
     const { classes, handleClose } = this.props;
-    const { setStation } = this.props.appStore.paramsStore;
+    const { setStation, station } = this.props.appStore.paramsStore;
 
     const stationList = stations.map(stn => (
       <CircleMarker
         key={stn.name}
         center={[stn.lat, stn.lon]}
-        radius={6}
-        color={"#221E22"}
+        radius={station.name === stn.name ? 7 : 5}
+        color={station.name === stn.name ? "#843EA4" : "#221E22"}
         onClick={() => {
           setStation(stn);
           handleClose();
