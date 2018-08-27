@@ -68,7 +68,7 @@ export default class ParamsStore {
   rainfall = 1;
   snowfall = 2;
 
-  dateOfInterest = new Date("02-01-2018");
+  dateOfInterest = new Date();
   setDateOfInterest = d => {
     this.dateOfInterest = d;
     this.maxt = this.isSummerOrWinter === "summer" ? 90 : 32;
