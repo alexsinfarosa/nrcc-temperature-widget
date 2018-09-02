@@ -82,7 +82,7 @@ export const stations = [
   {
     name: "Harrisburg",
     state: "PA",
-    sid: "cxythr",
+    sid: "mdtthr",
     lon: -76.85139,
     lat: 40.21722,
     type: "blue"
