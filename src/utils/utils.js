@@ -2,6 +2,19 @@ import { jStat } from "jStat";
 
 const without = (arr, ...args) => arr.filter(v => !args.includes(v));
 
+export const returnBoundingBox = arr => {
+  const lats = arr.map(stn => stn.lat);
+  const lons = arr.map(stn => stn.lon);
+
+  const minLat = Math.min(...lats);
+  const maxLat = Math.max(...lats);
+
+  const minLon = Math.min(...lons);
+  const maxLon = Math.max(...lons);
+
+  return [[minLat, maxLon], [maxLat, minLon]];
+};
+
 export const closest = (n, q) => {
   const daysAbove = parseFloat(n);
 

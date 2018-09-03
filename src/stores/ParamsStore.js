@@ -567,7 +567,7 @@ export default class ParamsStore {
         let original = dates
           .map((date, i) => {
             const value = values[i];
-            return value === "M" || value === "NaN" ? null : { date, value };
+            return value === "M" || isNaN(value) ? null : { date, value };
           })
           .filter(d => d);
 
