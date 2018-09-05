@@ -7,6 +7,7 @@ import { determineQuantiles, index, arcData, closest } from "../utils/utils";
 import { format, getMonth } from "date-fns/esm";
 
 import createHistory from "history/createBrowserHistory";
+import subDays from "date-fns/subDays";
 const history = createHistory();
 
 export default class ParamsStore {
@@ -48,6 +49,11 @@ export default class ParamsStore {
         this.mint = 20;
       }
     );
+
+    reaction(
+      () => this.data,
+      () => console.log(this.isSummerOrWinter, this.params)
+    );
   }
 
   isLoading = false;
@@ -68,9 +74,9 @@ export default class ParamsStore {
   rainfall = 1;
   snowfall = 2;
 
-  dateOfInterest = new Date();
+  dateOfInterest = subDays(new Date(), 1);
   setDateOfInterest = d => {
-    this.dateOfInterest = d;
+    this.dateOfInterest = subDays(d, 1);
     this.maxt = this.isSummerOrWinter === "summer" ? 90 : 32;
     this.mint = this.isSummerOrWinter === "summer" ? 65 : 20;
   };
@@ -305,7 +311,7 @@ export default class ParamsStore {
     return axios
       .post(`${window.location.protocol}//data.rcc-acis.org/StnData`, params)
       .then(res => {
-        // console.log(res.data.data);
+        console.log(res.data.data);
         this.setData(res.data.data);
         this.setIsLoading(false);
       })
@@ -553,7 +559,6 @@ export default class ParamsStore {
   get gauge() {
     let results = [];
     if (this.data) {
-      // console.log(this.data);
       Object.keys(this.keys).forEach((elem, i) => {
         let p = {};
         const label = this.keys[elem].label;
