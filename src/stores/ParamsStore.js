@@ -112,20 +112,23 @@ export default class ParamsStore {
       name: "avgt",
       interval: [1, 0, 0],
       duration: "mtd",
-      reduce: "mean"
+      reduce: "mean",
+      maxmissing: 1
     },
     {
       name: "avgt",
       interval: [1, 0, 0],
       duration: "std",
       season_start: `${this.season.season_start}`,
-      reduce: "mean"
+      reduce: "mean",
+      maxmissing: 1
     },
     {
       name: "avgt",
       interval: [1, 0, 0],
       duration: "ytd",
-      reduce: "mean"
+      reduce: "mean",
+      maxmissing: 5
     }
   ];
 
@@ -135,20 +138,23 @@ export default class ParamsStore {
       name: "pcpn",
       interval: [1, 0, 0],
       duration: "mtd",
-      reduce: "sum"
+      reduce: "sum",
+      maxmissing: 1
     },
     {
       name: "pcpn",
       interval: [1, 0, 0],
       duration: "std",
       season_start: `${this.season.season_start}`,
-      reduce: "sum"
+      reduce: "sum",
+      maxmissing: 1
     },
     {
       name: "pcpn",
       interval: [1, 0, 0],
       duration: "ytd",
-      reduce: "sum"
+      reduce: "sum",
+      maxmissing: 5
     }
   ];
 
@@ -159,63 +165,72 @@ export default class ParamsStore {
       interval: [1, 0, 0],
       duration: "std",
       season_start: "01-01",
-      reduce: `cnt_ge_80`
+      reduce: `cnt_ge_80`,
+      maxmissing: 1
     },
     {
       name: "maxt",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "01-01",
-      reduce: `cnt_ge_90`
+      reduce: `cnt_ge_90`,
+      maxmissing: 1
     },
     {
       name: "maxt",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "01-01",
-      reduce: `cnt_ge_100`
+      reduce: `cnt_ge_100`,
+      maxmissing: 1
     },
     {
       name: "mint",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "01-01",
-      reduce: `cnt_ge_65`
+      reduce: `cnt_ge_65`,
+      maxmissing: 1
     },
     {
       name: "mint",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "01-01",
-      reduce: `cnt_ge_70`
+      reduce: `cnt_ge_70`,
+      maxmissing: 1
     },
     {
       name: "mint",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "01-01",
-      reduce: `cnt_ge_75`
+      reduce: `cnt_ge_75`,
+      maxmissing: 1
     },
     {
       name: "pcpn",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "01-01",
-      reduce: `cnt_ge_1`
+      reduce: `cnt_ge_1`,
+      maxmissing: 1
     },
     {
       name: "pcpn",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "01-01",
-      reduce: `cnt_ge_2`
+      reduce: `cnt_ge_2`,
+      maxmissing: 1
     },
     {
       name: "pcpn",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "01-01",
-      reduce: `cnt_ge_3`
+      reduce: `cnt_ge_3`,
+      maxmissing: 1
     }
   ];
 
@@ -226,63 +241,72 @@ export default class ParamsStore {
       interval: [1, 0, 0],
       duration: "std",
       season_start: "07-01",
-      reduce: `cnt_le_32`
+      reduce: `cnt_le_32`,
+      maxmissing: 1
     },
     {
       name: "maxt",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "07-01",
-      reduce: `cnt_le_20`
+      reduce: `cnt_le_20`,
+      maxmissing: 1
     },
     {
       name: "maxt",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "07-01",
-      reduce: `cnt_le_15`
+      reduce: `cnt_le_15`,
+      maxmissing: 1
     },
     {
       name: "mint",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "07-01",
-      reduce: `cnt_le_20`
+      reduce: `cnt_le_20`,
+      maxmissing: 1
     },
     {
       name: "mint",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "07-01",
-      reduce: `cnt_le_15`
+      reduce: `cnt_le_15`,
+      maxmissing: 1
     },
     {
       name: "mint",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "07-01",
-      reduce: `cnt_le_10`
+      reduce: `cnt_le_10`,
+      maxmissing: 1
     },
     {
       name: "snow",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "07-01",
-      reduce: `cnt_ge_2`
+      reduce: `cnt_ge_2`,
+      maxmissing: 1
     },
     {
       name: "snow",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "07-01",
-      reduce: `cnt_ge_4`
+      reduce: `cnt_ge_4`,
+      maxmissing: 1
     },
     {
       name: "snow",
       interval: [1, 0, 0],
       duration: "std",
       season_start: "07-01",
-      reduce: `cnt_ge_6`
+      reduce: `cnt_ge_6`,
+      maxmissing: 1
     }
   ];
 
@@ -652,7 +676,7 @@ export default class ParamsStore {
         };
         results.push(p);
       });
-      console.log(results);
+      // console.log(results);
       return results;
     }
   }

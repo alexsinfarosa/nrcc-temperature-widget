@@ -73,10 +73,11 @@ class App extends Component {
             style={{
               display: "flex",
               justifyContent: "space-around",
+              alignItems: "center",
               marginBottom: 32
             }}
           >
-            <Typography variant="display1">
+            <Typography variant="title">
               <div>
                 Viewing Climate Conditions at{" "}
                 <span style={{ color: "#843EA4" }}>{station.name}</span>
@@ -95,7 +96,7 @@ class App extends Component {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton style={{ marginRight: -10 }}>
+                      <IconButton style={{ marginRight: -20 }}>
                         <Icon>date_range</Icon>
                       </IconButton>
                     </InputAdornment>
@@ -109,6 +110,7 @@ class App extends Component {
               color="primary"
               aria-label="map"
               onClick={this.handleOpen}
+              size="small"
             >
               <Icon style={{ marginRight: 5 }}>place</Icon>
               STATIONS
