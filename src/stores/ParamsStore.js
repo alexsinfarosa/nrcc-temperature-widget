@@ -76,7 +76,7 @@ export default class ParamsStore {
 
   dateOfInterest = subDays(new Date(), 1);
   setDateOfInterest = d => {
-    this.dateOfInterest = subDays(d, 1);
+    this.dateOfInterest = d;
     this.maxt = this.isSummerOrWinter === "summer" ? 90 : 32;
     this.mint = this.isSummerOrWinter === "summer" ? 65 : 20;
   };
@@ -335,7 +335,7 @@ export default class ParamsStore {
     return axios
       .post(`${window.location.protocol}//data.rcc-acis.org/StnData`, params)
       .then(res => {
-        console.log(res.data.data);
+        // console.log(res.data.data);
         this.setData(res.data.data);
         this.setIsLoading(false);
       })
