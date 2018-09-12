@@ -19,6 +19,7 @@ import Row from "./Row";
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    flexDirection: "column",
     padding: theme.spacing.unit * 2
   },
   centered: {
@@ -68,23 +69,18 @@ class App extends Component {
 
     return (
       <Grid container className={classes.root} spacing={32}>
-        <Grid item xs={12} sm={12}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-around",
-              alignItems: "center",
-              marginBottom: 32
-            }}
-          >
-            <Typography variant="title">
-              <div>
-                Viewing Climate Conditions at{" "}
-                <span style={{ color: "#843EA4" }}>{station.name}</span>
-              </div>
-            </Typography>
+        <Grid item>
+          <Grid container justify="space-around" spacing={32}>
+            <Grid item>
+              <Typography variant="title">
+                <div>
+                  Viewing Climate Conditions at{" "}
+                  <span style={{ color: "#843EA4" }}>{station.name}</span>
+                </div>
+              </Typography>
+            </Grid>
 
-            <div className={classes.formControl}>
+            <Grid item>
               <DatePicker
                 style={{ width: "100%" }}
                 label="Date of Interest"
@@ -103,26 +99,27 @@ class App extends Component {
                   )
                 }}
               />
-            </div>
+            </Grid>
 
-            <Button
-              variant="extendedFab"
-              color="primary"
-              aria-label="map"
-              onClick={this.handleOpen}
-              size="small"
-            >
-              <Icon style={{ marginRight: 5 }}>place</Icon>
-              STATIONS
-            </Button>
-          </div>
-
+            <Grid item>
+              <Button
+                variant="extendedFab"
+                color="primary"
+                aria-label="map"
+                onClick={this.handleOpen}
+                size="small"
+              >
+                <Icon style={{ marginRight: 5 }}>place</Icon>
+                STATIONS
+              </Button>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item>
           <Row type="TEMPERATURE" row={avgTemps} />
           <Row type="PRECIPITATION" row={avgPcpns} />
           <Row type="SEASONAL EXTREME" row={seasonalExtreme} />
         </Grid>
-
-        <MapModal isOpen={this.state.isOpen} handleClose={this.handleClose} />
       </Grid>
     );
   }
