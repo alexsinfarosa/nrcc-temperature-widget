@@ -62,9 +62,9 @@ const PieLabels = ({
         <circle
           cx={xL}
           cy={yL}
-          r={selectedIdx === index ? 17 : 13}
+          r={selectedIdx === index ? 13 : 13}
           fill="#fff"
-          stroke={selectedIdx === index ? "black" : null}
+          stroke={selectedIdx === index ? null : null}
           opacity={1}
         />
       )}
@@ -85,9 +85,8 @@ const PieLabels = ({
               : "white"
             : "black"
         }
-        fontSize={selectedIdx === index ? 13 : 9}
-        fontWeight="bold"
-        opacity={selectedIdx === index ? 1 : 0.5}
+        fontSize={selectedIdx === index ? (index === 1 ? 9 : 13) : 9}
+        opacity={selectedIdx === index ? (index === 1 ? 0.5 : 1) : 0.5}
       >
         {payload.name === "Slightly Below" && (
           <Fragment>

@@ -595,7 +595,7 @@ export default class ParamsStore {
 
         // values[values.length - 1] = NaN;
         let isLastYearNaN = isNaN(values.slice(-1));
-        console.log(values.slice(-1), isLastYearNaN);
+        // console.log(values.slice(-1), isLastYearNaN);
 
         let original = dates
           .map((date, i) => {
@@ -604,7 +604,7 @@ export default class ParamsStore {
           })
           .filter(d => d);
 
-        console.log(original);
+        // console.log(original);
         const datesCleaned = original.map(obj => obj.date);
         const valuesCleaned = original.map(obj => obj.value);
         let quantiles = determineQuantiles(valuesCleaned.slice(0, -1));
@@ -629,9 +629,7 @@ export default class ParamsStore {
 
         daysAboveThisYear = isLastYearNaN ? "N/A" : daysAboveThisYear;
 
-        const active = isLastYearNaN
-          ? null
-          : index(daysAboveThisYear, quantiles);
+        const active = isLastYearNaN ? 1 : index(daysAboveThisYear, quantiles);
         const gaugeData = arcData(quantiles, type);
         let sliderStyle;
         if (isSlider)
