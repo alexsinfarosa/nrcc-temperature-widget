@@ -589,17 +589,22 @@ export default class ParamsStore {
         const type = this.keys[elem].type;
         const isSlider = this.keys[elem].isSlider;
         const dates = this.data.map(d => d[0]);
-        const values = this.data.map(
+        let values = this.data.map(
           d => (d[i + 1] === "T" ? 0.0001 : parseFloat(d[i + 1]))
         );
 
+        // values[values.length - 1] = NaN;
+        let isLastYearNaN = isNaN(values.slice(-1));
+        console.log(values.slice(-1), isLastYearNaN);
+
         let original = dates
           .map((date, i) => {
-            const value = values[i];
-            return value === "M" || isNaN(value) ? null : { date, value };
+            let value = values[i];
+            return isNaN(value) ? null : { date, value };
           })
           .filter(d => d);
 
+        console.log(original);
         const datesCleaned = original.map(obj => obj.date);
         const valuesCleaned = original.map(obj => obj.value);
         let quantiles = determineQuantiles(valuesCleaned.slice(0, -1));
@@ -622,7 +627,11 @@ export default class ParamsStore {
           mean = quantiles["50"].toFixed(1);
         }
 
-        const active = index(daysAboveThisYear, quantiles);
+        daysAboveThisYear = isLastYearNaN ? "N/A" : daysAboveThisYear;
+
+        const active = isLastYearNaN
+          ? null
+          : index(daysAboveThisYear, quantiles);
         const gaugeData = arcData(quantiles, type);
         let sliderStyle;
         if (isSlider)

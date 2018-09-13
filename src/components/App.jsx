@@ -120,6 +120,7 @@ class App extends Component {
           <Row type="PRECIPITATION" row={avgPcpns} />
           <Row type="SEASONAL EXTREME" row={seasonalExtreme} />
         </Grid>
+        <MapModal isOpen={this.state.isOpen} handleClose={this.handleClose} />
       </Grid>
     );
   }
