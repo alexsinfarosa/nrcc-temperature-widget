@@ -5,7 +5,7 @@ export const stations = [
     sid: "dcathr",
     lon: -77.03454,
     lat: 38.8472,
-    type: "green"
+    default: false
   },
   {
     name: "NYC-Central Park",
@@ -13,7 +13,7 @@ export const stations = [
     sid: "nycthr",
     lon: -73.96917,
     lat: 40.77889,
-    type: "green"
+    default: true
   },
   {
     name: "LaGuardia Airport",
@@ -21,7 +21,7 @@ export const stations = [
     sid: "lgathr",
     lon: -73.874,
     lat: 40.7769,
-    type: "green"
+    default: false
   },
   {
     name: "Kennedy Airport",
@@ -29,7 +29,7 @@ export const stations = [
     sid: "jfkthr",
     lon: -73.7622,
     lat: 40.6386,
-    type: "green"
+    default: false
   },
   {
     name: "Newark",
@@ -37,7 +37,7 @@ export const stations = [
     sid: "ewrthr",
     lon: -74.16944,
     lat: 40.6825,
-    type: "blue"
+    default: false
   },
   {
     name: "Philadelphia",
@@ -45,7 +45,7 @@ export const stations = [
     sid: "phlthr",
     lon: -75.02,
     lat: 40.08,
-    type: "blue"
+    default: false
   },
   {
     name: "Boston Logan",
@@ -53,7 +53,7 @@ export const stations = [
     sid: "bosthr",
     lon: -71.01056,
     lat: 42.36056,
-    type: "blue"
+    default: false
   },
   {
     name: "Wilmington",
@@ -61,7 +61,7 @@ export const stations = [
     sid: "ilg_thr",
     lon: -75.60567,
     lat: 39.6744,
-    type: "blue"
+    default: false
   },
   {
     name: "Bridgeport",
@@ -69,7 +69,7 @@ export const stations = [
     sid: "bdrthr",
     lon: -73.12889,
     lat: 41.15833,
-    type: "blue"
+    default: false
   },
   {
     name: "Ithaca",
@@ -77,7 +77,7 @@ export const stations = [
     sid: "304174",
     lon: -76.4491,
     lat: 42.4491,
-    type: "blue"
+    default: false
   },
   {
     name: "Harrisburg",
@@ -85,7 +85,7 @@ export const stations = [
     sid: "mdtthr",
     lon: -76.85139,
     lat: 40.21722,
-    type: "blue"
+    default: false
   },
   {
     name: "Baltimore",
@@ -93,7 +93,7 @@ export const stations = [
     sid: "bwithr",
     lon: -76.684,
     lat: 39.1733,
-    type: "blue"
+    default: false
   },
   {
     name: "Islip",
@@ -101,7 +101,7 @@ export const stations = [
     sid: "ispthr",
     lon: -73.10167,
     lat: 40.79389,
-    type: "blue"
+    default: false
   },
   {
     name: "Providence",
@@ -109,7 +109,7 @@ export const stations = [
     sid: "pvdthr",
     lon: -71.43333,
     lat: 41.71667,
-    type: "blue"
+    default: false
   },
   {
     name: "Huntington",
@@ -117,7 +117,7 @@ export const stations = [
     sid: "htsthr",
     lon: -82.555,
     lat: 38.365,
-    type: "blue"
+    default: false
   },
   {
     name: "Washington Dulles",
@@ -125,7 +125,7 @@ export const stations = [
     sid: "iadthr",
     lon: -77.4473,
     lat: 38.9349,
-    type: "blue"
+    default: false
   },
   {
     name: "Charleston",
@@ -133,7 +133,7 @@ export const stations = [
     sid: "crwthr",
     lon: -81.59,
     lat: 38.3794,
-    type: "blue"
+    default: false
   },
   {
     name: "Worcester",
@@ -141,7 +141,7 @@ export const stations = [
     sid: "orhthr",
     lon: -71.8731,
     lat: 42.2706,
-    type: "blue"
+    default: false
   },
   {
     name: "Buffalo",
@@ -149,7 +149,7 @@ export const stations = [
     sid: "bufthr",
     lon: -78.7358,
     lat: 42.9408,
-    type: "blue"
+    default: false
   },
   {
     name: "Allentown",
@@ -157,7 +157,7 @@ export const stations = [
     sid: "abethr",
     lon: -75.44771,
     lat: 40.64985,
-    type: "blue"
+    default: false
   },
   {
     name: "Atlantic City",
@@ -165,7 +165,7 @@ export const stations = [
     sid: "acythr",
     lon: -74.56699,
     lat: 39.45202,
-    type: "blue"
+    default: false
   },
   {
     name: "Scranton",
@@ -173,7 +173,7 @@ export const stations = [
     sid: "avpthr",
     lon: -75.7269,
     lat: 41.3336,
-    type: "blue"
+    default: false
   },
   {
     name: "Pittsburgh",
@@ -181,7 +181,7 @@ export const stations = [
     sid: "pitthr",
     lon: -80.2144,
     lat: 40.4846,
-    type: "blue"
+    default: false
   },
   {
     name: "Hartford",
@@ -189,7 +189,7 @@ export const stations = [
     sid: "bdlthr",
     lon: -72.6819,
     lat: 41.9375,
-    type: "blue"
+    default: false
   },
   {
     name: "Erie",
@@ -197,7 +197,7 @@ export const stations = [
     sid: "erithr",
     lon: -80.1824,
     lat: 42.0803,
-    type: "blue"
+    default: false
   },
   {
     name: "Rochester",
@@ -205,7 +205,7 @@ export const stations = [
     sid: "rocthr",
     lon: -77.6767,
     lat: 43.1167,
-    type: "blue"
+    default: false
   },
   {
     name: "Williamsport",
@@ -213,7 +213,7 @@ export const stations = [
     sid: "iptthr",
     lon: -76.9217,
     lat: 41.2433,
-    type: "blue"
+    default: false
   },
   {
     name: "Syracuse",
@@ -221,7 +221,7 @@ export const stations = [
     sid: "syrthr",
     lon: -76.1038,
     lat: 43.1111,
-    type: "blue"
+    default: false
   },
   {
     name: "Beckley",
@@ -229,7 +229,7 @@ export const stations = [
     sid: "bkwthr",
     lon: -81.123,
     lat: 37.7836,
-    type: "blue"
+    default: false
   },
   {
     name: "Binghamton",
@@ -237,7 +237,7 @@ export const stations = [
     sid: "bgmthr",
     lon: -75.98,
     lat: 42.2068,
-    type: "yellow"
+    default: false
   },
   {
     name: "Portland",
@@ -245,7 +245,7 @@ export const stations = [
     sid: "pwmthr",
     lon: -70.30444,
     lat: 43.64222,
-    type: "yellow"
+    default: false
   },
   {
     name: "Albany",
@@ -253,7 +253,7 @@ export const stations = [
     sid: "albthr",
     lon: -73.79912,
     lat: 42.74722,
-    type: "yellow"
+    default: false
   },
   {
     name: "Burlington",
@@ -261,7 +261,7 @@ export const stations = [
     sid: "btvthr",
     lon: -73.1499,
     lat: 44.4683,
-    type: "yellow"
+    default: false
   },
   {
     name: "Elkins",
@@ -269,7 +269,7 @@ export const stations = [
     sid: "eknthr",
     lon: -79.8528,
     lat: 38.8853,
-    type: "yellow"
+    default: false
   },
   {
     name: "Concord",
@@ -277,7 +277,7 @@ export const stations = [
     sid: "conthr",
     lon: -71.50274,
     lat: 43.2049,
-    type: "yellow"
+    default: false
   },
   {
     name: "Caribou",
@@ -285,6 +285,6 @@ export const stations = [
     sid: "carthr",
     lon: -68.0173,
     lat: 46.8705,
-    type: "yellow"
+    default: false
   }
 ];

@@ -11,11 +11,12 @@ import subDays from "date-fns/subDays";
 const history = createHistory();
 
 export default class ParamsStore {
-  hash = "nycthr";
+  hash = stations.find(stn => stn.default).sid;
   maxt;
   mint;
   constructor() {
     const query = history.location.hash.slice(1);
+
     const isValidQuery =
       query !== "" && stations.find(stn => stn.sid === query) !== undefined;
 
@@ -59,7 +60,7 @@ export default class ParamsStore {
   isLoading = false;
   setIsLoading = d => this.isLoading;
 
-  station = stations.find(stn => stn.sid === "nycthr");
+  station = stations.find(stn => stn.default).sid;
 
   setStation = d => {
     this.hash = d.sid;
