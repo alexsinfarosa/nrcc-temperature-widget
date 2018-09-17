@@ -1,7 +1,7 @@
 import { decorate, observable, action, computed, when, reaction } from "mobx";
 import axios from "axios";
 // import { jStat } from "jStat";
-import { stations } from "../assets/stationList";
+import stations from "../assets/stationList.json";
 
 import { determineQuantiles, index, arcData, closest } from "../utils/utils";
 import { format, getMonth } from "date-fns/esm";

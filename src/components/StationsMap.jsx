@@ -7,7 +7,7 @@ import { Map, TileLayer, CircleMarker, Tooltip } from "react-leaflet";
 import { withStyles } from "@material-ui/core/styles";
 import withRoot from "../withRoot";
 
-import { stations } from "../assets/stationList";
+import stations from "../assets/stationList.json";
 import { returnBoundingBox } from "../utils/utils";
 
 // styles
