@@ -70,7 +70,12 @@ class App extends Component {
     return (
       <Grid container className={classes.root} spacing={32}>
         <Grid item>
-          <Grid container justify="space-around" spacing={32}>
+          <Grid
+            container
+            justify="space-around"
+            alignItems="center"
+            spacing={32}
+          >
             <Grid item>
               <Typography variant="title">
                 <div>

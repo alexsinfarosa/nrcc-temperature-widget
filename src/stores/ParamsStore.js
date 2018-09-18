@@ -11,10 +11,23 @@ import subDays from "date-fns/subDays";
 const history = createHistory();
 
 export default class ParamsStore {
-  hash = stations.find(stn => stn.default).sid;
+  stns;
+  setStns = d => (this.stns = d);
+  hash;
   maxt;
   mint;
   constructor() {
+    // when(
+    //   () => !this.stations,
+    //   () => {
+    //     fetch("stationList2.json")
+    //       .then(res => res.json())
+    //       .then(res => {
+    //         this.setStns(res);
+    //       });
+    //   }
+    // );
+    this.hash = stations.find(stn => stn.default).sid;
     const query = history.location.hash.slice(1);
 
     const isValidQuery =
@@ -772,5 +785,7 @@ decorate(ParamsStore, {
   seasonalExtreme: computed,
   dateOfInterest: observable,
   setDateOfInterest: action,
-  month: computed
+  month: computed,
+  stns: observable,
+  setStns: action
 });

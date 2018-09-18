@@ -85,6 +85,7 @@ const PieLabels = ({
               : "white"
             : "black"
         }
+        fontWeight="bold"
         fontSize={selectedIdx === index ? (index === 1 ? 9 : 13) : 9}
         opacity={selectedIdx === index ? (index === 1 ? 0.5 : 1) : 0.5}
       >
