@@ -13,7 +13,6 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 
 import getYear from "date-fns/getYear";
-import isSameYear from "date-fns/isSameYear";
 
 // components
 import MapModal from "./MapModal";
