@@ -12,6 +12,9 @@ import DatePicker from "material-ui-pickers/DatePicker";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 
+import getYear from "date-fns/getYear";
+import isSameYear from "date-fns/isSameYear";
+
 // components
 import MapModal from "./MapModal";
 import Row from "./Row";
@@ -67,6 +70,10 @@ class App extends Component {
       setDateOfInterest
     } = this.props.appStore.paramsStore;
 
+    const thisYear = getYear(new Date());
+    const selectedYear = getYear(dateOfInterest);
+    const isThisYear = thisYear === selectedYear;
+
     return (
       <Grid container className={classes.root} spacing={32}>
         <Grid item>
@@ -80,7 +87,11 @@ class App extends Component {
               <Typography variant="title">
                 <div>
                   Viewing Climate Conditions at{" "}
-                  <span style={{ color: "#843EA4" }}>{station.name}</span>
+                  {station ? (
+                    <span style={{ color: "#843EA4" }}>{station.name}</span>
+                  ) : (
+                    <span style={{ color: "#843EA4" }}>...</span>
+                  )}
                 </div>
               </Typography>
             </Grid>
@@ -91,7 +102,7 @@ class App extends Component {
                 label="Date of Interest"
                 value={dateOfInterest}
                 onChange={setDateOfInterest}
-                format="MMMM Do"
+                format={isThisYear ? "MMMM Do" : "MMMM Do YYYY"}
                 disableFuture
                 showTodayButton
                 InputProps={{

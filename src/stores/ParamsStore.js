@@ -1,7 +1,7 @@
 import { decorate, observable, action, computed, when, reaction } from "mobx";
 import axios from "axios";
 // import { jStat } from "jStat";
-import stations from "../assets/stationList.json";
+// import stations from "../assets/stationList.json";
 
 import { determineQuantiles, index, arcData, closest } from "../utils/utils";
 import { format, getMonth } from "date-fns/esm";
@@ -16,35 +16,42 @@ export default class ParamsStore {
   hash;
   maxt;
   mint;
+  station;
   constructor() {
-    // when(
-    //   () => !this.stations,
-    //   () => {
-    //     fetch("stationList2.json")
-    //       .then(res => res.json())
-    //       .then(res => {
-    //         this.setStns(res);
-    //       });
-    //   }
-    // );
-    this.hash = stations.find(stn => stn.default).sid;
-    const query = history.location.hash.slice(1);
+    when(
+      () => !this.stns,
+      () => {
+        fetch("stationList2.json")
+          .then(res => res.json())
+          .then(stns => {
+            this.setStns(stns);
+            this.hash = stns.find(stn => stn.default).sid;
+            const query = history.location.hash.slice(1);
 
-    const isValidQuery =
-      query !== "" && stations.find(stn => stn.sid === query) !== undefined;
+            const isValidQuery =
+              query !== "" && stns.find(stn => stn.sid === query) !== undefined;
 
-    isValidQuery
-      ? when(
-          () => true,
-          () => {
-            this.hash = query;
-            this.station = stations.find(stn => stn.sid === query);
-          }
-        )
-      : when(() => true, () => history.push({ hash: `#${this.hash}` }));
+            isValidQuery
+              ? when(
+                  () => true,
+                  () => {
+                    this.hash = query;
+                    this.station = stns.find(stn => stn.sid === query);
+                    this.loadObservedData(this.params);
+                  }
+                )
+              : when(
+                  () => true,
+                  () => {
+                    history.push({ hash: `#${this.hash}` });
+                    this.station = stns.find(stn => stn.sid === this.hash);
+                    this.loadObservedData(this.params);
+                  }
+                );
+          });
+      }
+    );
 
-    when(() => !this.data, () => this.loadObservedData(this.params));
-    reaction(() => this.station.sid, () => this.loadObservedData(this.params));
     reaction(
       () => this.dateOfInterest,
       () => this.loadObservedData(this.params)
@@ -73,7 +80,7 @@ export default class ParamsStore {
   isLoading = false;
   setIsLoading = d => this.isLoading;
 
-  station = stations.find(stn => stn.default).sid;
+  // station = this.stns ? this.stns.find(stn => stn.default).sid : null;
 
   setStation = d => {
     this.hash = d.sid;
@@ -83,6 +90,7 @@ export default class ParamsStore {
     this.mint = this.isSummerOrWinter === "summer" ? 65 : 20;
     this.rainfall = 1;
     this.snowfall = 2;
+    this.loadObservedData(this.params);
   };
 
   rainfall = 1;
@@ -344,6 +352,7 @@ export default class ParamsStore {
   setData = d => (this.data = d);
 
   loadObservedData = params => {
+    // console.log("loadObservableData called");
     this.setData(undefined);
     this.setIsLoading(true);
     return axios
