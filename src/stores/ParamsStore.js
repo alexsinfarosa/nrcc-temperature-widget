@@ -21,7 +21,7 @@ export default class ParamsStore {
     when(
       () => !this.stns,
       () => {
-        fetch("stationList2.json")
+        fetch("stationList.json")
           .then(res => res.json())
           .then(stns => {
             this.setStns(stns);
