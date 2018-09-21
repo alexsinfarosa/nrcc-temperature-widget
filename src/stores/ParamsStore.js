@@ -71,10 +71,10 @@ export default class ParamsStore {
       }
     );
 
-    reaction(
-      () => this.data,
-      () => console.log(this.isSummerOrWinter, this.params)
-    );
+    // reaction(
+    //   () => this.data,
+    //   () => console.log(this.isSummerOrWinter, this.params)
+    // );
   }
 
   isLoading = false;

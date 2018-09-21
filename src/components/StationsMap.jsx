@@ -7,7 +7,7 @@ import { Map, TileLayer, CircleMarker, Tooltip } from "react-leaflet";
 import { withStyles } from "@material-ui/core/styles";
 import withRoot from "../withRoot";
 
-import stations from "../assets/stationList.json";
+// import stations from "../assets/stationList.json";
 import { returnBoundingBox } from "../utils/utils";
 
 // styles
@@ -23,9 +23,9 @@ const styles = theme => ({
 class StationsMap extends Component {
   render() {
     const { classes, handleClose } = this.props;
-    const { setStation, station } = this.props.appStore.paramsStore;
+    const { setStation, station, stns } = this.props.appStore.paramsStore;
 
-    const stationList = stations.map(stn => (
+    const stationList = stns.map(stn => (
       <CircleMarker
         key={stn.name}
         center={[stn.lat, stn.lon]}
@@ -45,7 +45,7 @@ class StationsMap extends Component {
     return (
       <div className={classes.root}>
         <Map
-          bounds={returnBoundingBox(stations)}
+          bounds={returnBoundingBox(stns)}
           style={{ width: "100%", height: "100%" }}
           zoomControl={false}
         >
