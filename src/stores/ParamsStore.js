@@ -554,26 +554,98 @@ export default class ParamsStore {
 
     this.isSummerOrWinter === "summer"
       ? (extremeKeys = {
-          maxt80: { label: "Days > 80", type: "maxt", isSlider: true },
-          maxt90: { label: "Days > 90", type: "maxt", isSlider: true },
-          maxt100: { label: "Days > 100", type: "maxt", isSlider: true },
-          mint65: { label: "Nights > 65", type: "mint", isSlider: true },
-          mint70: { label: "Nights > 70", type: "mint", isSlider: true },
-          mint75: { label: "Nights > 75", type: "mint", isSlider: true },
-          rain1: { label: "Rainfall > 1", type: "rainfall", isSlider: true },
-          rain2: { label: "Rainfall > 2", type: "rainfall", isSlider: true },
-          rain3: { label: "Rainfall > 3", type: "rainfall", isSlider: true }
+          maxt80: {
+            label: `Days ${String.fromCharCode(8805)} 80`,
+            type: "maxt",
+            isSlider: true
+          },
+          maxt90: {
+            label: `Days ${String.fromCharCode(8805)} 90`,
+            type: "maxt",
+            isSlider: true
+          },
+          maxt100: {
+            label: `Days ${String.fromCharCode(8805)} 100`,
+            type: "maxt",
+            isSlider: true
+          },
+          mint65: {
+            label: `Nights ${String.fromCharCode(8805)} 65`,
+            type: "mint",
+            isSlider: true
+          },
+          mint70: {
+            label: `Nights ${String.fromCharCode(8805)} 70`,
+            type: "mint",
+            isSlider: true
+          },
+          mint75: {
+            label: `Nights ${String.fromCharCode(8805)} 75`,
+            type: "mint",
+            isSlider: true
+          },
+          rain1: {
+            label: `Rainfall ${String.fromCharCode(8805)} 1`,
+            type: "rainfall",
+            isSlider: true
+          },
+          rain2: {
+            label: `Rainfall ${String.fromCharCode(8805)} 2`,
+            type: "rainfall",
+            isSlider: true
+          },
+          rain3: {
+            label: `Rainfall ${String.fromCharCode(8805)} 3`,
+            type: "rainfall",
+            isSlider: true
+          }
         })
       : (extremeKeys = {
-          maxt32: { label: "Days < 32", type: "maxt", isSlider: true },
-          maxt20: { label: "Days < 20", type: "maxt", isSlider: true },
-          maxt15: { label: "Days < 15", type: "maxt", isSlider: true },
-          mint20: { label: "Nights < 20", type: "mint", isSlider: true },
-          mint15: { label: "Nights < 15", type: "mint", isSlider: true },
-          mint10: { label: "Nights < 10", type: "mint", isSlider: true },
-          snow2: { label: "Snowfall > 2", type: "snowfall", isSlider: true },
-          snow4: { label: "Snowfall > 4", type: "snowfall", isSlider: true },
-          snow6: { label: "Snowfall > 6", type: "snowfall", isSlider: true }
+          maxt32: {
+            label: `Days ${String.fromCharCode(8804)} 32`,
+            type: "maxt",
+            isSlider: true
+          },
+          maxt20: {
+            label: `Days ${String.fromCharCode(8804)} 20`,
+            type: "maxt",
+            isSlider: true
+          },
+          maxt15: {
+            label: `Days ${String.fromCharCode(8804)} 15`,
+            type: "maxt",
+            isSlider: true
+          },
+          mint20: {
+            label: `Nights ${String.fromCharCode(8804)} 20`,
+            type: "mint",
+            isSlider: true
+          },
+          mint15: {
+            label: `Nights ${String.fromCharCode(8804)} 15`,
+            type: "mint",
+            isSlider: true
+          },
+          mint10: {
+            label: `Nights ${String.fromCharCode(8804)} 10`,
+            type: "mint",
+            isSlider: true
+          },
+          snow2: {
+            label: `Snowfall ${String.fromCharCode(8805)} 2`,
+            type: "snowfall",
+            isSlider: true
+          },
+          snow4: {
+            label: `Snowfall ${String.fromCharCode(8805)} 4`,
+            type: "snowfall",
+            isSlider: true
+          },
+          snow6: {
+            label: `Snowfall ${String.fromCharCode(8805)} 6`,
+            type: "snowfall",
+            isSlider: true
+          }
         });
 
     return {
