@@ -125,7 +125,7 @@ class App extends Component {
                 size="small"
               >
                 <Icon style={{ marginRight: 5 }}>place</Icon>
-                STATIONS
+                <span style={{ paddingRight: 8 }}>STATIONS</span>
               </Button>
             </Grid>
           </Grid>

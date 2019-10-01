@@ -29,7 +29,7 @@ class StationsMap extends Component {
       <CircleMarker
         key={stn.name}
         center={[stn.lat, stn.lon]}
-        radius={station.name === stn.name ? 7 : 5}
+        radius={station.name === stn.name ? 12 : 10}
         color={station.name === stn.name ? "#843EA4" : "#221E22"}
         onClick={() => {
           setStation(stn);
