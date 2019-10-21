@@ -21,14 +21,14 @@ class MySlider extends Component {
       <Grid item style={{ width: 200 }}>
         <Slider
           handleStyle={{
-            borderColor: "#843EA4",
+            borderColor: "#67793E",
             height: 14,
             width: 14,
             backgroundColor: "white"
           }}
-          dotStyle={{ borderColor: "#843EA4" }}
-          activeDotStyle={{ borderColor: "#843EA4" }}
-          trackStyle={{ background: "#843EA4" }}
+          dotStyle={{ borderColor: "#67793E" }}
+          activeDotStyle={{ borderColor: "#67793E" }}
+          trackStyle={{ background: "#67793E" }}
           min={sliderStyle.min}
           marks={sliderStyle.marks}
           step={null}

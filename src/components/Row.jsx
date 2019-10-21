@@ -16,7 +16,7 @@ import { RingLoader } from "react-spinners";
 const styles = theme => ({
   root: {
     flexGrowth: 1,
-    borderLeft: "2px solid #843EA4",
+    borderLeft: "2px solid #67793E",
     marginBottom: theme.spacing.unit * 4
   },
   button: {
@@ -53,7 +53,7 @@ class Rows extends Component {
       <div className={classes.root}>
         <Typography
           variant="caption"
-          style={{ color: "#843EA4", marginLeft: 10 }}
+          style={{ color: "#67793E", marginLeft: 10, fontWeight: "bold" }}
         >
           {type}
         </Typography>
@@ -103,7 +103,7 @@ class Rows extends Component {
                       alignItems: "center"
                     }}
                   >
-                    <RingLoader color={"#843EA4"} loading={!row} />
+                    <RingLoader color={"#67793E"} loading={!row} />
                   </Grid>
                 </Grid>
               </Grid>

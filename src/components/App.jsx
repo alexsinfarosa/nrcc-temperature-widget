@@ -87,9 +87,13 @@ class App extends Component {
                 <div>
                   Viewing Climate Conditions at{" "}
                   {station ? (
-                    <span style={{ color: "#843EA4" }}>{station.name}</span>
+                    <span style={{ color: "#67793E", fontWeight: "bold" }}>
+                      {station.name}
+                    </span>
                   ) : (
-                    <span style={{ color: "#843EA4" }}>...</span>
+                    <span style={{ color: "#67793E", fontWeight: "bold" }}>
+                      ...
+                    </span>
                   )}
                 </div>
               </Typography>
